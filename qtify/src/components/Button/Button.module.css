@@ -1,0 +1,21 @@
+/* Button.module.css */
+
+.container {
+    display: flex
+}
+
+.button {
+    margin-top:0.8em;  
+    margin-right:1em; 
+    border-radius: 50px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    font-size: x-large;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: bolder;
+    padding: 1em;
+    width:12em;
+    max-width: 100%; 
+    box-sizing: border-box;
+ }
