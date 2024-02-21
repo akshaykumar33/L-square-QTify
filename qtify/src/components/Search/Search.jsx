@@ -14,23 +14,32 @@ export default function Search() {
           id="fullWidth"
           sx={{
             backgroundColor: `var(--color-white)`,
-            borderTopLeftRadius: '15px',  
-            borderBottomLeftRadius: '15px',  
+            borderTopLeftRadius: '0.5em',  
+            borderBottomLeftRadius: '0.5em',
+            borderTopRightRadius: '0em',  
+            borderBottomRightRadius: '0em',    
            
             '& .MuiInputBase-root': {
-              fontSize: '26px', 
-              height: '3em', 
+              fontSize: '1em', 
+              height: '2em', 
+              padding:'1.3em',
+              borderTopLeftRadius: '0.5em',  
+              borderBottomLeftRadius: '0.5em', 
+              borderTopRightRadius: '0em',  
+              borderBottomRightRadius: '0em',   
             
             },
           }}
         />
         <Button
           variant="outlined"
-          startIcon={<SearchRoundedIcon style={{ fontSize: '3em',color:'var(--secondary-color)' }} />} 
+          startIcon={<SearchRoundedIcon style={{ fontSize: '2em',color:'var(--secondary-color)' }} />} 
           sx={{
             backgroundColor: 'var(--color-white)',
-            borderTopRightRadius: '15px',  
-            borderBottomRightRadius: '15px',  
+            borderTopRightRadius: '0.5em',  
+            borderBottomRightRadius: '0.5em',
+            borderTopLeftRadius: '0em',  
+            borderBottomLeftRadius: '0em',   
           }}
         />
       </Stack>

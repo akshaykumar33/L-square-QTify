@@ -9,11 +9,11 @@ const Navbar = () => {
   return (
     <nav>
       <Box className={styles.navbar} >
-        <Box display="grid" gridTemplateColumns="auto 1fr auto" gap={20}>
+        <Box display="grid" gridTemplateColumns="auto 1fr auto" gap={5}>
           <Box>
             <Logo/>
           </Box>
-          <Box style={{ justifySelf: 'center',width:'60%'}}>
+          <Box style={{ justifySelf: 'center',width:'55%'}}>
             <Search/>
           </Box>
           <Box >

@@ -1,10 +1,11 @@
 /* Search.module.css */
 .search-bar{
-    margin-top:1.5em;
-    width:'70em';
+    margin-top:0.5em;
+    margin-bottom: 0.5em;
+    /* width:'70em';
     align-items:'center';
     display:'flex';
-    justify-content:'center';
+    justify-content:'center'; */
 }
 
 
