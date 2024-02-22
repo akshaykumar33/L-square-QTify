@@ -11,12 +11,11 @@
     color: var(--primary-color);
     background-color: var(--secondary-color);
     font-size:medium;
-    font-family:'Courier New', Courier, monospace;
+    font-family:'Poppins';
     font-weight: bolder;
     height:2.5em;
     padding: 0.5em;
-    /* width:12em;
-    max-width: 100%;  */
+    cursor:pointer;
     box-sizing: border-box;
 }
 .modal {
