@@ -1,5 +1,3 @@
-/* Button.module.css */
-
 .container {
     display: flex
 }
@@ -20,4 +18,41 @@
     /* width:12em;
     max-width: 100%;  */
     box-sizing: border-box;
- }
+}
+.modal {
+    width: 30em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-white);
+    padding: 16px;
+    border-radius: 4px;
+    color: var(--secondary-color);
+    border: 0.25em solid var(--primary-color);
+  }
+  
+  .modalTitle {
+    text-align: center;
+  }
+  
+  .closeIcon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+.modal > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.MuiTextField-root {
+    margin: 8px;
+}
+
+.submitButton {
+    height: 3em; 
+    border-radius: 8px; 
+  }

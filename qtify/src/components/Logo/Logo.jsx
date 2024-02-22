@@ -4,7 +4,7 @@ import logoImage from '../../assets/images/logo.PNG';
 export default function Logo() {
     return (
         <div className={styles.logo}>
-            <img src={logoImage} alt="QtifyLogo" style={{ width: '7em', height: '3.5em' }}/>
+            <img src={logoImage} alt="QtifyLogo" style={{ width: '4.2em', height: '2.6em' }}/>
         </div>
     );
 }

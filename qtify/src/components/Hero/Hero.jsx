@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Hero.module.css'
 import Box from '@mui/material/Box';
-import HeroImage from '../../assets/images/hero-section-headphone.PNG';
+import HeroImage from '../../assets/images/vibrating-headphone.png';
 
 function Hero() {
   return (

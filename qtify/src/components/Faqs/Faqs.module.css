@@ -1,0 +1,14 @@
+.faq{
+    background-color: var(--secondary-color);
+    margin-left:5em;
+    margin-right: 5em;
+    margin-top:0.5em;
+   padding-bottom: 2em;
+}
+h2{
+    justify-self: center;
+    font-size: xx-large;
+    font-weight: bolder;
+    color:var(--color-white);
+    font-family: 'Courier New', Courier, monospace;
+}
