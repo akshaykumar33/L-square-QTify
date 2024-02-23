@@ -1,0 +1,55 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding:1em;
+}
+
+.topSection{
+    margin-bottom: 2em;
+}
+.corner1 {
+    position: absolute;
+
+    left: 10px;
+}
+
+.corner2 {
+    position: absolute;
+
+    right: 10px;
+}
+
+.typo {
+    color: var(--color-white);
+}
+
+
+.sliderContainer {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px; 
+  
+}
+
+.slider {
+    margin:10px;
+    flex: 0 0 auto;
+    
+}
+
+.icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leftIcon ,.rightIcon {
+    z-index: 2;
+    border-radius: 50%; 
+    top:9em;
+}
+
+.card{
+    margin: 1em;
+}

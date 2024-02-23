@@ -23,12 +23,14 @@ export default function ButtonComponent(props){
                 aria-describedby="modal-modal-description"
             >
                 <Box className={styles.modal}>
+                    <Box className={styles.header}>
                     <Typography variant="h4" component="h1" className={styles.modalTitle}>
                         Feedback
                     </Typography>
                     <IconButton className={styles.closeIcon} size="small" onClick={handleClose}>
                         <CloseIcon />
                     </IconButton>
+                    </Box>
                     <Box component="form" sx={{'& .MuiTextField-root': { m: 1},width:'25em', textAlign: 'center' }} noValidate autoComplete="off">
                         <TextField  fullWidth id="fullName" label="Full Name" variant="outlined" />
                         <TextField  fullWidth id="email" label="Email" variant="outlined" />

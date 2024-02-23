@@ -1,0 +1,45 @@
+.card {
+  width: 159px;
+  height: 250px;
+  background-color: var(--secondary-color);
+
+}
+
+.topic {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0px;
+  text-align: left;
+  width: 159px;
+  height: 20px;
+  color: var(--color-white);
+}
+
+.media {
+  width: 159px;
+  height: 165px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-start;
+  width: 159px;
+  background-color: var(--color-white);
+  border-radius: 0px 0px 10px 10px;
+  height: 40px;
+  align-items: center;
+}
+
+.chip {
+ margin-left:1em;
+  color: var(--color-white);
+  background-color: var(--secondary-color);
+  font-size:xx-small;
+  width:6em;
+  padding:0.2em;
+  border-radius: 40px;
+  font-family: Poppins;
+}

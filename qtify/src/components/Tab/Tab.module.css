@@ -1,0 +1,17 @@
+
+.container{
+    margin:0em;
+
+}
+.typo {
+    margin: 1em;
+     display:flex;
+     justify-content:space-between;
+    
+    color: var(--color-white);
+
+}
+.tab{
+    display:flex;
+    
+}

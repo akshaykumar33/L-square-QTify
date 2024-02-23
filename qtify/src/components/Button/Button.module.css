@@ -32,12 +32,18 @@
   }
   
   .modalTitle {
-    text-align: center;
+   text-align: center;
+    
   }
-  
+  .header{
+    display:flex;
+    justify-content: space-between;
+
+  }
   .closeIcon {
+    
     position: absolute;
-    top: 8px;
+    top: 0.1em;
     right: 8px;
   }
 
