@@ -1,5 +1,4 @@
 import React from 'react';
-import Album from '../../assets/images/testalbum.png';
 import styles from './Card.module.css';
 
 
@@ -7,15 +6,15 @@ export default function CardComponent(props) {
   return (
     <div className={styles.card}>
       <div className={styles.media}>
-        <img src={Album} alt="album" className={styles.albumImage} />
+        <img src={props.image} alt={props.title} className={styles.albumImage} />
       </div>
       <div className={styles.actions}>
         <div className={styles.chip}>
-          <span>100 follows</span>
+          <span>{props.follows} follows</span>
         </div>
       </div>
       <div className={styles.topic}>
-        <span>New Bollywood</span>
+        <span>{props.title}</span>
       </div>
     </div>
   );
