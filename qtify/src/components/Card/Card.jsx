@@ -3,6 +3,7 @@ import styles from './Card.module.css';
 
 
 export default function CardComponent(props) {
+  const name=props.song==='true'? ' Follows':" Likes";
   return (
     <div className={styles.card}>
       <div className={styles.media}>
@@ -10,7 +11,7 @@ export default function CardComponent(props) {
       </div>
       <div className={styles.actions}>
         <div className={styles.chip}>
-          <span>{props.follows} follows</span>
+          <span>{props.follows}{name}</span>
         </div>
       </div>
       <div className={styles.topic}>

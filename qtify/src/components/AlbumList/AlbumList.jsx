@@ -12,10 +12,37 @@ import { Stack } from '@mui/material';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import IconButton from '@mui/material/IconButton';
 
- function AlbumList({rows}) {
+ function AlbumList() {
   const rowsPerPage = 15; 
   const [page, setPage] = useState(1);
-  
+  const rows=[
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"}
+    ,
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"},
+    {name:"name",artist:"artist",duration:"duration"}
+  ]
   // Calculate the index of the first and last row to display based on the current page
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
