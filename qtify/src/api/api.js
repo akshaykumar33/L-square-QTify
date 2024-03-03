@@ -13,7 +13,7 @@ export async function fetchTopSongs() {
         return response.json();
     } catch (error) {
         console.error('Error fetching top songs:', error);
-        // Handle the error gracefully, possibly retry or show an error message to the user
+       
         throw error;
     }
 }
@@ -29,7 +29,54 @@ export async function fetchNewSongs() {
         return response.json();
     } catch (error) {
         console.error('Error fetching new songs:', error);
-        // Handle the error gracefully, possibly retry or show an error message to the user
+       
+        throw error;
+    }
+
+    
+}
+
+export async function fetchSongs() {
+    const apiUrl = `${BACKEND_POINT}/songs`;
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error('Failed to fetch  songs');
+        }
+        return response.json();
+    } catch (error) {
+        console.error('Error fetching  songs:', error);
+       
+        throw error;
+    }
+}
+
+export async function fetchGenres() {
+    const apiUrl = `${BACKEND_POINT}/genres`;
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error('Failed to fetch genres');
+        }
+        return response.json();
+    } catch (error) {
+        console.error('Error fetching genres:', error);
+       
+        throw error;
+    }
+}
+
+export async function fetchFaqs() {
+    const apiUrl = `${BACKEND_POINT}/faq`;
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error('Failed to fetch FAQs');
+        }
+        return response.json();
+    } catch (error) {
+        console.error('Error fetching FAQs:', error);
+       
         throw error;
     }
 }

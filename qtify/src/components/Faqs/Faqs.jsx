@@ -4,59 +4,67 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Fade from '@mui/material/Fade';
 import styles from './Faqs.module.css';
+import { Contexts } from '../../pages/HomePage';
 
 export default function Faqs() {
-  const [expanded, setExpanded] = React.useState(false);
+  const contexts = React.useContext(Contexts);
+  const faqs = contexts.faqs;
 
-  const handleExpansion = () => {
-    setExpanded((prevExpanded) => !prevExpanded);
-  };
 
   return (
     <div className={styles.faq}>
-        <h2>FAQs</h2>
-      <Accordion
-        expanded={expanded}
-        onChange={handleExpansion}
-        slots={{ transition: Fade }}
-        slotProps={{ transition: { timeout: 400 } }}
-        sx={{
-            background:'var(--secondary-color)',borderRadius:'0.25em',
-          '& .MuiAccordion-region': { height: expanded ? 'auto' : 0 },
-          '& .MuiAccordionDetails-root': { display: expanded ? 'block' : 'none' },
-        }}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon style={{color:'var(--primary-color)',fontSize: '2em'}}/>}
-          aria-controls="panel1-content"
-          sx={{background:'var(--secondary-color)',color:'var(--color-white)',borderRadius:'0.25em',border:'1px solid var(--color-white)'}}
-          id="panel1-header"
+      <h2>FAQs</h2>
+      {!faqs.data? (
+        <>
+          <h1 style={{ backgroundColor: 'var(--color-white)' }}>Loading....</h1>
+        </>
+      ) : (
+        faqs.data.map((faq, index) => (
+          index!==0?( <Accordion
+          key={index}
+          
         >
-          <Typography>Is QTify free to use?</Typography>
-        </AccordionSummary>
-        <AccordionDetails sx={{background:'var(--color-white)',borderRadius:'0.25em'}}>
-          <Typography>
-          Yes! It is 100% free, and has 0% ads!
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion sx={{background:'var(--secondary-color)',borderRadius:'0.25em'}}>
-        <AccordionSummary
-        expandIcon={<ExpandMoreIcon style={{color:'var(--primary-color)',fontSize: '2em'}}/>}
-        aria-controls="panel2-content"
-        sx={{background:'var(--secondary-color)',color:'var(--color-white)',borderRadius:'0.25em',border:'1px solid var(--color-white)'}}
-          id="panel2-header"
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon style={{ color: 'var(--primary-color)', fontSize: '2em' }} />}
+              aria-controls={`panel${index + 1}-content`}
+              sx={{
+                background: 'var(--secondary-color)',
+                color: 'var(--color-white)',
+                borderRadius: '0.25em',
+                border: '1px solid var(--color-white)',
+              }}
+              id={`panel${index + 1}-header`}
+            >
+              <Typography>{faq.question}</Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ background: 'var(--color-white)', borderRadius: '0.25em' }}>
+              <Typography>{faq.answer}</Typography>
+            </AccordionDetails>
+          </Accordion>):(<Accordion
+                   defaultExpanded
+                   key={index}
+        
         >
-          <Typography>Can I download and listen to songs offline?</Typography>
-        </AccordionSummary>
-        <AccordionDetails sx={{background:'var(--color-white)',borderRadius:'0.25em'}}>
-          <Typography>
-          Sorry, unfortunately we don't provide the service to download any songs.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon style={{ color: 'var(--primary-color)', fontSize: '2em' }} />}
+              aria-controls={`panel${index + 1}-content`}
+              sx={{
+                background: 'var(--secondary-color)',
+                color: 'var(--color-white)',
+                borderRadius: '0.25em',
+                border: '1px solid var(--color-white)',
+              }}
+              id={`panel${index + 1}-header`}
+            >
+              <Typography>{faq.question}</Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ background: 'var(--color-white)', borderRadius: '0.25em' }}>
+              <Typography>{faq.answer}</Typography>
+            </AccordionDetails>
+          </Accordion>)
+        ))
+      )}
     </div>
   );
 }

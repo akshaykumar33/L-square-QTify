@@ -8,6 +8,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import HomePage from './pages/HomePage';
+import AlbumPage from './pages/AlbumPage';
+
 
 const router = createBrowserRouter([
   {
@@ -18,8 +20,12 @@ const router = createBrowserRouter([
         path: "/",
         element: <HomePage />,
       },
+      {
+        path:'/album/:albumName',
+        element:<AlbumPage />
+      }    
     ],
-  },
+  }
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

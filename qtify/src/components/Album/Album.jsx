@@ -12,17 +12,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import { Contexts } from '../../App';
+import { Contexts } from '../../pages/HomePage';
 
-function Album({ topSection = true, name = "" }) {
+function Album({ topSection = true, name = "" ,lists=[]}) {
     const sliderRef = useRef(null);
     const [showAll, setShowAll] = useState(false);
 
     const contexts = useContext(Contexts);
-    const Albums = name === "Top Albums" ? contexts.topAlbums : contexts.newAlbums;
-
- 
      
+    const Albums= name==="Top Albums"?contexts.topAlbums:name==="New Albums"?contexts.newAlbums:name==="Songs"?lists:null;
+  
     const handleNextSlide = () => {
         sliderRef.current.swiper.slideNext();
     };
@@ -35,7 +34,7 @@ function Album({ topSection = true, name = "" }) {
         <>
             {!Albums ? (
                 <div className={styles.container}>
-                    <h1>Loading....</h1>
+                    <h1 style={{ backgroundColor: 'var(--color-white)' }}>Loading....</h1>
                 </div>
             ) : (
                 <div className={styles.container}>
@@ -78,7 +77,7 @@ function Album({ topSection = true, name = "" }) {
                                             <CardComponent 
                                                 image={Albums[index].image}
                                                 title={Albums[index].title}
-                                                follows={Albums[index].follows}
+                                                follows={Albums[index].follows || Albums[index].likes}
                                             />
                                         </div>
                                     </SwiperSlide>
