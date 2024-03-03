@@ -78,7 +78,7 @@ function Album({ topSection = true, name = "" ,lists=[]}) {
                                                 image={Albums[index].image}
                                                 title={Albums[index].title}
                                                 follows={Albums[index].follows || Albums[index].likes}
-                                                 song={'true'}
+                                                 song={Albums[index].likes?'true':'false'}
                                             />
                                         </div>
                                     </SwiperSlide>
