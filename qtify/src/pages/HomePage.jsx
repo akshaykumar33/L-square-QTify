@@ -20,7 +20,6 @@ function HomePage() {
   const fetchData = async (key, fetchFunction) => {
     try {
       const data = await fetchFunction();
-     
       return { [key]: data };
     } catch (error) {
       console.error(`Error fetching ${key}:`, error);
@@ -41,10 +40,15 @@ function HomePage() {
         await setGenres(genresData.genres);
         await setSongs(songsData.songs);
         await setFaqs(faqData.faqs);
+       
         
     };
 
     fetchDataAndSetState();
+
+
+    
+
 },[]); 
 
 
