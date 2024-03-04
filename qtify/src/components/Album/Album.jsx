@@ -17,7 +17,7 @@ import { Contexts } from '../../pages/HomePage';
 function Album({ topSection = true, name = "" ,lists=[]}) {
     const sliderRef = useRef(null);
     const [showAll, setShowAll] = useState(false);
-
+    // console.log("Album",lists);
     const contexts = useContext(Contexts);
      
     const Albums= name==="Top Albums"?contexts.topAlbums:name==="New Albums"?contexts.newAlbums:name==="Songs"?lists:null;

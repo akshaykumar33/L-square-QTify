@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import Album from '../Album/Album'
 import { Contexts } from '../../pages/HomePage';
 import db from '../../api/db.json'
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -40,120 +41,19 @@ export default function FullWidthTabs() {
   const theme = useTheme();
   const [value, setValue] = useState(0);
     const contexts = useContext(Contexts);
-   //const[permission,setPermission]=useState(false);
- //const [filtered,setFiltered]=useState([]);
+   
   const genres= contexts.genres?contexts.genres:[];
-  const [songs,setSongs]=useState(db?db:contexts.songs);
-  // let counts = {'r': 12, 'j': 11, 'p': 12, 'b': 8};
+  
+  const songs=contexts.songs;
  
-
-//  useEffect(() => {
-//   function createSongs(key, value, m) {
-//     let arr = [];
-//     for (let i = 1; i <= m; i++) {
-//       let tempSong = {
-//         "id": `f4377d17-eef9-4e2f-80a5-0658fa095017${i + key}`,
-//         "title": "Lady",
-//         "artists": ["Sean Schroeder", "Sherman Doyle"],
-//         "genre": {
-//           "key": `${key}`,
-//           "label": `${value}`
-//         },
-//         "likes": 16091,
-//         "image": "https://images.pexels.com/photos/15379/pexels-photo.jpg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-//         "durationInMs": 43802
-//       }
-//       arr.push(tempSong);
-//     }
-//     //console.log("label",arr,arr.length,m)
-//     return arr;
-//   }
-
-//   const filterSongsByGenre = () => {
-//     let newFilteredSongs = [];
-
-//     genres.data && genres.data.forEach(genre => {
-//       let songList = songs.filter(song => song.genre.label === genre.label);
-//       let n = Number(songList.length);
-
-//       switch (genre.label) {
-//         case 'Rock':
-//           if (n >= counts.r) {
-//             songList.splice(12);
-//             newFilteredSongs.push(
-//               ...songList
-//             )
-//           } else {
-//             let arr = createSongs('rock', "Rock", counts['r']-n);
-//             newFilteredSongs.push(
-//               ...songList,
-//               ...arr
-//             );
-//           }
-//           break;
-
-//         case 'Jazz':
-//           if (n >= counts.j) {
-//            songList.splice(11);
-//             newFilteredSongs.push(
-//               ...songList
-//             )
-//           } else {
-//             let arr = createSongs('jazz', "Jazz", counts['j']-n);
-//             newFilteredSongs.push(
-//               ...songList,
-//               ...arr
-//             );
-//           }
-//           break;
-
-//         case 'Pop':
-//           if (n >= counts.p) {
-//             songList.splice(12);
-//             newFilteredSongs.push(
-//               ...songList
-//             )
-//           } else {
-//             let arr = createSongs('pop', "Pop", counts['p']-n);
-//             newFilteredSongs.push(
-//               ...songList,
-//               ...arr
-//             );
-//           }
-//           break;
-
-//         case 'Blues':
-//           if (n >= counts.b) {
-//             songList.splice(8);
-//             newFilteredSongs.push(
-//               ...songList
-//             )
-//           } else {
-//             let arr = createSongs('blues', "Blues", counts['b']-n);
-//             newFilteredSongs.push(
-//               ...songList,
-//               ...arr
-//             );
-//           }
-//           break;
-
-//         default:
-//           break;
-//       }
-//     });
-
-//     setSongs(newFilteredSongs);
-//     setFiltered(newFilteredSongs)
-
-//     filtered.length!==0?setPermission(true):setPermission(false);
-//   };
-
-//   filterSongsByGenre();
-// }, [songs, genres]);
+  let jazz=songs.filter((song) => song.genre.label === 'Jazz');
+  let pop=songs.filter((song) => song.genre.label === 'Pop')
+  let rock=songs.filter((song) => song.genre.label === 'Rock')
+  let blues=songs.filter((song) => song.genre.label === 'Blues')
+  // console.log(jazz,pop,rock,blues);
 
 
-  //console.log("permission Trail",songs,permission,filtered);
- let passingTrail= songs  && genres.data;
+ let passingTrail= songs  && genres.data && jazz && pop && rock && blues;
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -185,24 +85,19 @@ export default function FullWidthTabs() {
          
 
 
-            {
-  genres.data && genres.data.map((genre,index) => {
-    let filteredSongs = songs.filter((song, i) => song.genre.label === genre.label);
   
-      let songCount = filteredSongs.length; 
-     //console.log("filteredSongs",genre.label,songCount);
-    return (
-      <TabPanel key={index} value={value} index={index} dir={theme.direction}>
-        {songCount > 0 ? (
-          <Album topSection={false} name={"Songs"} lists={filteredSongs} />
-        ) : (
-          <Typography>No songs available for this genre</Typography>
-        )}
-      </TabPanel>
-    );
-  })
-}
-
+<TabPanel  value={value} index={0} dir={theme.direction}>
+  <Album topSection={false} name={"Songs"} lists={jazz} />
+    </TabPanel>
+    <TabPanel  value={value} index={1} dir={theme.direction}>
+  <Album topSection={false} name={"Songs"} lists={rock} />
+    </TabPanel>
+    <TabPanel  value={value} index={2}  dir={theme.direction}>
+  <Album topSection={false} name={"Songs"} lists={pop} />
+    </TabPanel>
+    <TabPanel  value={value} index={3} dir={theme.direction}>
+  <Album topSection={false} name={"Songs"} lists={blues} />
+    </TabPanel>
 
         </Box>
       )}
