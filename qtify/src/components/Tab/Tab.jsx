@@ -44,7 +44,7 @@ export default function FullWidthTabs() {
    
   const genres= contexts.genres?contexts.genres:[];
   
-  const songs=contexts.songs;
+  const songs=db;
  
   let jazz=songs.filter((song) => song.genre.label === 'Jazz');
   let pop=songs.filter((song) => song.genre.label === 'Pop')
