@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Album from '../Album/Album'
 import { Contexts } from '../../pages/HomePage';
-
+import db from '../../api/db.json'
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -40,120 +40,120 @@ export default function FullWidthTabs() {
   const theme = useTheme();
   const [value, setValue] = useState(0);
     const contexts = useContext(Contexts);
-   const[permission,setPermission]=useState(false);
- const [filtered,setFiltered]=useState([]);
+   //const[permission,setPermission]=useState(false);
+ //const [filtered,setFiltered]=useState([]);
   const genres= contexts.genres?contexts.genres:[];
-  const [songs,setSongs]=useState(contexts.songs?contexts.songs:[]);
-  let counts = {'r': 12, 'j': 11, 'p': 12, 'b': 8};
+  const [songs,setSongs]=useState(db?db:contexts.songs);
+  // let counts = {'r': 12, 'j': 11, 'p': 12, 'b': 8};
  
 
- useEffect(() => {
-  function createSongs(key, value, m) {
-    let arr = [];
-    for (let i = 1; i <= m; i++) {
-      let tempSong = {
-        "id": `f4377d17-eef9-4e2f-80a5-0658fa095017${i + key}`,
-        "title": "Lady",
-        "artists": ["Sean Schroeder", "Sherman Doyle"],
-        "genre": {
-          "key": `${key}`,
-          "label": `${value}`
-        },
-        "likes": 16091,
-        "image": "https://images.pexels.com/photos/15379/pexels-photo.jpg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-        "durationInMs": 43802
-      }
-      arr.push(tempSong);
-    }
-    //console.log("label",arr,arr.length,m)
-    return arr;
-  }
+//  useEffect(() => {
+//   function createSongs(key, value, m) {
+//     let arr = [];
+//     for (let i = 1; i <= m; i++) {
+//       let tempSong = {
+//         "id": `f4377d17-eef9-4e2f-80a5-0658fa095017${i + key}`,
+//         "title": "Lady",
+//         "artists": ["Sean Schroeder", "Sherman Doyle"],
+//         "genre": {
+//           "key": `${key}`,
+//           "label": `${value}`
+//         },
+//         "likes": 16091,
+//         "image": "https://images.pexels.com/photos/15379/pexels-photo.jpg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
+//         "durationInMs": 43802
+//       }
+//       arr.push(tempSong);
+//     }
+//     //console.log("label",arr,arr.length,m)
+//     return arr;
+//   }
 
-  const filterSongsByGenre = () => {
-    let newFilteredSongs = [];
+//   const filterSongsByGenre = () => {
+//     let newFilteredSongs = [];
 
-    genres.data && genres.data.forEach(genre => {
-      let songList = songs.filter(song => song.genre.label === genre.label);
-      let n = Number(songList.length);
+//     genres.data && genres.data.forEach(genre => {
+//       let songList = songs.filter(song => song.genre.label === genre.label);
+//       let n = Number(songList.length);
 
-      switch (genre.label) {
-        case 'Rock':
-          if (n >= counts.r) {
-            songList.splice(12);
-            newFilteredSongs.push(
-              ...songList
-            )
-          } else {
-            let arr = createSongs('rock', "Rock", counts['r']-n);
-            newFilteredSongs.push(
-              ...songList,
-              ...arr
-            );
-          }
-          break;
+//       switch (genre.label) {
+//         case 'Rock':
+//           if (n >= counts.r) {
+//             songList.splice(12);
+//             newFilteredSongs.push(
+//               ...songList
+//             )
+//           } else {
+//             let arr = createSongs('rock', "Rock", counts['r']-n);
+//             newFilteredSongs.push(
+//               ...songList,
+//               ...arr
+//             );
+//           }
+//           break;
 
-        case 'Jazz':
-          if (n >= counts.j) {
-           songList.splice(11);
-            newFilteredSongs.push(
-              ...songList
-            )
-          } else {
-            let arr = createSongs('jazz', "Jazz", counts['j']-n);
-            newFilteredSongs.push(
-              ...songList,
-              ...arr
-            );
-          }
-          break;
+//         case 'Jazz':
+//           if (n >= counts.j) {
+//            songList.splice(11);
+//             newFilteredSongs.push(
+//               ...songList
+//             )
+//           } else {
+//             let arr = createSongs('jazz', "Jazz", counts['j']-n);
+//             newFilteredSongs.push(
+//               ...songList,
+//               ...arr
+//             );
+//           }
+//           break;
 
-        case 'Pop':
-          if (n >= counts.p) {
-            songList.splice(12);
-            newFilteredSongs.push(
-              ...songList
-            )
-          } else {
-            let arr = createSongs('pop', "Pop", counts['p']-n);
-            newFilteredSongs.push(
-              ...songList,
-              ...arr
-            );
-          }
-          break;
+//         case 'Pop':
+//           if (n >= counts.p) {
+//             songList.splice(12);
+//             newFilteredSongs.push(
+//               ...songList
+//             )
+//           } else {
+//             let arr = createSongs('pop', "Pop", counts['p']-n);
+//             newFilteredSongs.push(
+//               ...songList,
+//               ...arr
+//             );
+//           }
+//           break;
 
-        case 'Blues':
-          if (n >= counts.b) {
-            songList.splice(8);
-            newFilteredSongs.push(
-              ...songList
-            )
-          } else {
-            let arr = createSongs('blues', "Blues", counts['b']-n);
-            newFilteredSongs.push(
-              ...songList,
-              ...arr
-            );
-          }
-          break;
+//         case 'Blues':
+//           if (n >= counts.b) {
+//             songList.splice(8);
+//             newFilteredSongs.push(
+//               ...songList
+//             )
+//           } else {
+//             let arr = createSongs('blues', "Blues", counts['b']-n);
+//             newFilteredSongs.push(
+//               ...songList,
+//               ...arr
+//             );
+//           }
+//           break;
 
-        default:
-          break;
-      }
-    });
+//         default:
+//           break;
+//       }
+//     });
 
-    setSongs(newFilteredSongs);
-    setFiltered(newFilteredSongs)
+//     setSongs(newFilteredSongs);
+//     setFiltered(newFilteredSongs)
 
-    filtered.length!==0?setPermission(true):setPermission(false);
-  };
+//     filtered.length!==0?setPermission(true):setPermission(false);
+//   };
 
-  filterSongsByGenre();
-}, [songs, genres]);
+//   filterSongsByGenre();
+// }, [songs, genres]);
 
 
   //console.log("permission Trail",songs,permission,filtered);
-let passingTrail=permission && songs && filtered && genres.data;
+ let passingTrail= songs  && genres.data;
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -187,7 +187,7 @@ let passingTrail=permission && songs && filtered && genres.data;
 
             {
   genres.data && genres.data.map((genre,index) => {
-    let filteredSongs = filtered.filter((song, i) => song.genre.label === genre.label);
+    let filteredSongs = songs.filter((song, i) => song.genre.label === genre.label);
   
       let songCount = filteredSongs.length; 
      //console.log("filteredSongs",genre.label,songCount);
