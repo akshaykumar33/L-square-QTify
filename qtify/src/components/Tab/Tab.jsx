@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import Album from '../Album/Album'
 import { useContext } from 'react';
 import { Contexts } from '../../pages/HomePage';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -71,21 +72,24 @@ export default function FullWidthTabs() {
                 variant="fullWidth"
                 aria-label="full width tabs example"
               >
+                <Tab  label={'all'} {...a11yProps(0)} sx={{ color: 'var(--color-white)' }} />
                 {genres.data && genres.data.map((genre, index) => (
-                  <Tab key={index} label={genre.label} {...a11yProps(index)} sx={{ color: 'var(--color-white)' }} />
+                  <Tab key={index} label={genre.label} {...a11yProps(index+1)} sx={{ color: 'var(--color-white)' }} />
                 ))}
               </Tabs>
             </Box>
          
 
-
+            <TabPanel  value={value} index={0} dir={theme.direction}>
+                      <Album topSection={false} name={"Songs"} lists={songs}/>;
+                    </TabPanel>
           {
-            genres.data && genres.data.map((genre,index) => {
+            genres.data ? genres.data.map((genre,index) => {
                   let lists= songs.filter((song,i)=>song.genre.label===genre.label);
-                  return <TabPanel key={index} value={value} index={index} dir={theme.direction}>
+                  return <TabPanel key={index} value={value} index={index+1} dir={theme.direction}>
                       <Album topSection={false} name={"Songs"} lists={lists}/>;
                     </TabPanel>
-            })
+            }): <CircularProgress color="secondary"sx={{color:'var(--primary-color)'}} />
           }
 
         </Box>

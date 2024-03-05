@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import styles from './Faqs.module.css';
 import { Contexts } from '../../pages/HomePage';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Faqs() {
   const contexts = React.useContext(Contexts);
@@ -16,9 +17,9 @@ export default function Faqs() {
     <div className={styles.faq}>
       <h2>FAQs</h2>
       {!faqs.data? (
-        <>
-          <h1 style={{ backgroundColor: 'var(--color-white)' }}>Loading....</h1>
-        </>
+        
+         <CircularProgress color="secondary"sx={{color:'var(--primary-color)'}} />
+        
       ) : (
         faqs.data.map((faq, index) => (
           index!==0?( <Accordion

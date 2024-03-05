@@ -13,6 +13,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Contexts } from '../../pages/HomePage';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Album({ topSection = true, name = "" ,lists=[]}) {
     const sliderRef = useRef(null);
@@ -34,7 +35,7 @@ function Album({ topSection = true, name = "" ,lists=[]}) {
         <>
             {!Albums ? (
                 <div className={styles.container}>
-                    <h1 style={{ backgroundColor: 'var(--color-white)' }}>Loading....</h1>
+                    <CircularProgress color="secondary"sx={{color:'var(--primary-color)'}} />
                 </div>
             ) : (
                 <div className={styles.container}>
