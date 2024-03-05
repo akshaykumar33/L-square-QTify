@@ -37,24 +37,21 @@ function a11yProps(index) {
   };
 }
 
-export default function FullWidthTabs() {
+export default function FullWidthTabs({filteredData,filteredDataValues}) {
   const theme = useTheme();
   const [value, setValue] = useState(0);
     const contexts = useContext(Contexts);
    
   const genres= contexts.genres?contexts.genres:[];
   
-  const songs=db;
+  const songs=filteredDataValues;
  
-  let jazz=songs.filter((song) => song.genre.label === 'Jazz');
-  let pop=songs.filter((song) => song.genre.label === 'Pop')
-  let rock=songs.filter((song) => song.genre.label === 'Rock')
-  let blues=songs.filter((song) => song.genre.label === 'Blues')
-  // console.log(jazz,pop,rock,blues);
 
 
- let passingTrail= songs  && genres.data && jazz && pop && rock && blues;
+
+ let passingTrail= songs  && genres.data 
   const handleChange = (event, newValue) => {
+    filteredData(newValue)
     setValue(newValue);
   };
 
@@ -77,9 +74,12 @@ export default function FullWidthTabs() {
                 variant="fullWidth"
                 aria-label="full width tabs example"
               >
-                {genres.data && genres.data.map((genre, index) => (
-                  <Tab key={index} label={genre.label} {...a11yProps(index)} sx={{ color: 'var(--color-white)' }} />
-                ))}
+                
+
+<Tab  label={"jazz"} {...a11yProps(0)} sx={{ color: 'var(--color-white)' }} />
+<Tab  label={"rock"} {...a11yProps(1)} sx={{ color: 'var(--color-white)' }} />
+<Tab  label={"pop"} {...a11yProps(2)} sx={{ color: 'var(--color-white)' }} />
+<Tab  label={"blues"} {...a11yProps(3)} sx={{ color: 'var(--color-white)' }} />
               </Tabs>
             </Box>
          
@@ -87,16 +87,16 @@ export default function FullWidthTabs() {
 
   
 <TabPanel  value={value} index={0} dir={theme.direction}>
-  <Album topSection={false} name={"Songs"} lists={jazz} />
+  <Album topSection={false} name={"Songs"} lists={songs} />
     </TabPanel>
     <TabPanel  value={value} index={1} dir={theme.direction}>
-  <Album topSection={false} name={"Songs"} lists={rock} />
+  <Album topSection={false} name={"Songs"} lists={songs} />
     </TabPanel>
     <TabPanel  value={value} index={2}  dir={theme.direction}>
-  <Album topSection={false} name={"Songs"} lists={pop} />
+  <Album topSection={false} name={"Songs"} lists={songs} />
     </TabPanel>
     <TabPanel  value={value} index={3} dir={theme.direction}>
-  <Album topSection={false} name={"Songs"} lists={blues} />
+  <Album topSection={false} name={"Songs"} lists={songs} />
     </TabPanel>
 
         </Box>
