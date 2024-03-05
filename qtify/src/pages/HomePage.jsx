@@ -16,10 +16,11 @@ function HomePage() {
   const [songs, setSongs] = useState([]);
   const [genres, setGenres] = useState([]);
   const [faqs,setFaqs] =useState({});
-  const [filteredDataValues,setFilteredDataValues]=useState([]);
+
   const fetchData = async (key, fetchFunction) => {
     try {
       const data = await fetchFunction();
+     
       return { [key]: data };
     } catch (error) {
       console.error(`Error fetching ${key}:`, error);
@@ -40,44 +41,13 @@ function HomePage() {
         await setGenres(genresData.genres);
         await setSongs(songsData.songs);
         await setFaqs(faqData.faqs);
-       
         
     };
 
     fetchDataAndSetState();
-
-
-    
-
 },[]); 
-const generateSongsData = (value) => {
-  let songData = songs;
-  let key;
-  if (value === 0) {
-    setFilteredDataValues(songData)
-    return;
-  }
-  else if (value === 1) {
-    key = 'rock'
-  }
-  else if (value === 2) {
-    key = 'pop'
-  }
-  else if (value === 3) {
-    key = 'jazz'
-  }
-  else if (value === 4) {
-    key = 'blues'
-  }
-  const data = songData.filter((item) => {
-    return item.genre.key === key
-  })
-  setFilteredDataValues(data)
-}
 
-const filteredData = (val) => {
-  generateSongsData(val)
-}
+
   return (
     <>
     
@@ -91,7 +61,7 @@ const filteredData = (val) => {
         <Divider sx={{ backgroundColor: 'var(--primary-color)', height: '1px' }} />
         {newAlbums && (<Album name={'New Albums'}/>)}
         <Divider sx={{ backgroundColor: 'var(--primary-color)', height: '1px' }} />
-        {(genres.data && songs && filteredDataValues) && (<Tab filteredData={filteredData} filteredDataValues={filteredDataValues} />)}
+        {(genres.data && songs) && (<Tab />)}
         <Divider sx={{ backgroundColor: 'var(--primary-color)', height: '1px' }} />
        {faqs && ( <Faqs />)}
         <Divider sx={{ backgroundColor: 'var(--primary-color)', height: '1px' }} />

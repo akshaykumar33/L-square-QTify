@@ -1,4 +1,4 @@
-import React, {useState,useEffect,useContext } from 'react';
+import React, {useState } from 'react';
 import styles from './Tab.module.css'
 import { useTheme } from '@mui/material/styles';
 import Tabs from '@mui/material/Tabs';
@@ -6,8 +6,8 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Album from '../Album/Album'
+import { useContext } from 'react';
 import { Contexts } from '../../pages/HomePage';
-import db from '../../api/db.json'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -37,27 +37,24 @@ function a11yProps(index) {
   };
 }
 
-export default function FullWidthTabs({filteredData,filteredDataValues}) {
+export default function FullWidthTabs() {
   const theme = useTheme();
   const [value, setValue] = useState(0);
-    const contexts = useContext(Contexts);
-   
+
+  const contexts = useContext(Contexts);
+
+
   const genres= contexts.genres?contexts.genres:[];
-  
-  const songs=filteredDataValues;
+  const songs=contexts.songs?contexts.songs:[];
  
 
-
-
- let passingTrail= songs  && genres.data 
   const handleChange = (event, newValue) => {
-    filteredData(newValue)
     setValue(newValue);
   };
 
   return (
     <>
-      {passingTrail && (
+      {(songs && genres.data) && (
         <Box className={styles.container}>
           <Box className={styles.typo}>
             <Typography>
@@ -74,30 +71,22 @@ export default function FullWidthTabs({filteredData,filteredDataValues}) {
                 variant="fullWidth"
                 aria-label="full width tabs example"
               >
-                
-
-<Tab  label={"jazz"} {...a11yProps(0)} sx={{ color: 'var(--color-white)' }} />
-<Tab  label={"rock"} {...a11yProps(1)} sx={{ color: 'var(--color-white)' }} />
-<Tab  label={"pop"} {...a11yProps(2)} sx={{ color: 'var(--color-white)' }} />
-<Tab  label={"blues"} {...a11yProps(3)} sx={{ color: 'var(--color-white)' }} />
+                {genres.data && genres.data.map((genre, index) => (
+                  <Tab key={index} label={genre.label} {...a11yProps(index)} sx={{ color: 'var(--color-white)' }} />
+                ))}
               </Tabs>
             </Box>
          
 
 
-  
-<TabPanel  value={value} index={0} dir={theme.direction}>
-  <Album topSection={false} name={"Songs"} lists={songs} />
-    </TabPanel>
-    <TabPanel  value={value} index={1} dir={theme.direction}>
-  <Album topSection={false} name={"Songs"} lists={songs} />
-    </TabPanel>
-    <TabPanel  value={value} index={2}  dir={theme.direction}>
-  <Album topSection={false} name={"Songs"} lists={songs} />
-    </TabPanel>
-    <TabPanel  value={value} index={3} dir={theme.direction}>
-  <Album topSection={false} name={"Songs"} lists={songs} />
-    </TabPanel>
+          {
+            genres.data && genres.data.map((genre,index) => {
+                  let lists= songs.filter((song,i)=>song.genre.label===genre.label);
+                  return <TabPanel key={index} value={value} index={index} dir={theme.direction}>
+                      <Album topSection={false} name={"Songs"} lists={lists}/>;
+                    </TabPanel>
+            })
+          }
 
         </Box>
       )}
