@@ -45,6 +45,7 @@ function HomePage() {
     };
 
     fetchDataAndSetState();
+    alert("Please view this in Desktop or change your browser's mode to desktop view to utilize and experience richness of site")   
 },[]); 
 
 
