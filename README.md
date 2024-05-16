@@ -28,7 +28,7 @@ Follow these steps to get the project up and running on your local machine:
 2. **Navigate to the project directory:**
 
     ```bash
-    cd your-repo-name
+    cd L-square-QTify
     ```
 
 3. **Install the dependencies:**
